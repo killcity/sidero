@@ -1,4 +1,4 @@
-# Sidero
+# Sidero 1
 
 Kubernetes Bare Metal Lifecycle Management.
 Sidero Metal provides lightweight, composable tools that can be used to create bare-metal Talos + Kubernetes clusters.
