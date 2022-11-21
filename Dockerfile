@@ -182,6 +182,7 @@ COPY --from=pkg-ipmitool-amd64 / .
 COPY --from=agent-build-amd64 /agent ./init
 COPY --from=pkg-linux-firmware-amd64 /lib/firmware/bnx2 ./lib/firmware/bnx2
 COPY --from=pkg-linux-firmware-amd64 /lib/firmware/bnx2x ./lib/firmware/bnx2x
+COPY --from=pkg-linux-firmware-amd64 /lib/firmware/intel/ice/ddp/ice-*.pkg ./lib/firmware/intel/ice/ddp/ice.pkg
 RUN set -o pipefail && find . 2>/dev/null | cpio -H newc -o | xz -v -C crc32 -0 -e -T 0 -z >/initramfs.xz
 
 FROM base AS initramfs-archive-arm64
@@ -193,6 +194,7 @@ COPY --from=pkg-ipmitool-arm64 / .
 COPY --from=agent-build-arm64 /agent ./init
 COPY --from=pkg-linux-firmware-arm64 /lib/firmware/bnx2 ./lib/firmware/bnx2
 COPY --from=pkg-linux-firmware-arm64 /lib/firmware/bnx2x ./lib/firmware/bnx2x
+COPY --from=pkg-linux-firmware-arm64 /lib/firmware/intel/ice/ddp/ice-*.pkg ./lib/firmware/intel/ice/ddp/ice.pkg
 RUN set -o pipefail && find . 2>/dev/null | cpio -H newc -o | xz -v -C crc32 -0 -e -T 0 -z >/initramfs.xz
 
 FROM scratch AS sidero-controller-manager-image
