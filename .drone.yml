@@ -9,10 +9,10 @@ steps:
     commands:
       - setup-ci
     privileged: true
-    resources:
-      requests:
-        cpu: 24000
-        memory: 48GiB
+    #resources:
+      #requests:
+        #cpu: 24000
+        #memory: 48GiB
     volumes:
       - name: docker-socket
         path: /var/run
